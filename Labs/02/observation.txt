@@ -1,0 +1,31 @@
+Emily Costa
+CS 214 Lab2
+Feb 14, 2020
+----------------
+
+Flex Example 1
+----------------
+This part of the code is reading in the input translated in to the tokens and then compares it to
+determine the output.  
+
+Flex Example 2
+----------------
+Input -> Output
+
+123 -> NUMBER
+a23 -> WORD
+a -> WORD
+
+1_2_3 -> NUMBER _NUMBER _NUMBER
+a_23 -> WORD _NUMBER
+
+When I include an underscore into my input, the tokenizer separates each string 
+and it reads it as each individual section. The underscore also gets printed in the output.
+
+Bison Example 4
+----------------
+Terminals represent indiviual symbols and no not have branches. 
+Non-temrinal have nultiple symbols and have branches.
+
+
+

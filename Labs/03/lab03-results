@@ -1,0 +1,343 @@
+Script started on 2020-02-20 00:27:56-0500
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Ada[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Ada[00m$ cat year_codes.adb
+-- Emily Costa
+-- Feb 21, 2020
+-- CS 214 A
+-- Lab 3 - Given a grade level (string) return the appropriate number code (int)-------------------------------------------------------------------------------
+
+with Ada.Text_IO, Ada.Integer_Text_IO;
+use Ada.Text_IO, Ada.Integer_Text_IO;
+
+-- start of main function
+procedure year_codes is
+
+   -- declaring string variable
+   year : string(1..9);	
+   length : integer;
+
+   -- creating a function that will take a string and return correct int
+   function Year_Code (year : in string) return Integer is
+      begin
+         --function returning int
+         if (year = "freshman") then
+            return 1;
+	 elsif (year = "sophomore") then
+	    return 2;
+	 elsif (year = "junior") then
+            return 3;
+	 elsif (year = "senior") then
+	    return 4;
+         else
+	    return 0;
+         -- End of my if statements
+         end if;
+	 
+      end Year_Code;
+
+begin
+
+   -- promt user to input year
+   New_Line;
+   Put_Line(" To compute the corresponding integer code: ");
+   Put(" Enter name of academic year: ");
+   get_line(year, length);
+
+   -- calling funciton Year_Code to compare input print results
+   -- important to format the input before sending to function 
+   Put(" The integer code is: ");
+   Put(Year_Code(year(1..length)),0);
+   New_Line; New_Line;
+
+end year_codes;
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Ada[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Ada[00m$ cat year_codes.adb[1Pt[1P[1P[1@g[1@n[1@a[1@t[1@m[1@a[1@k[1@e year_codes.adb    
+gnatmake: "year_codes" up to date.
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Ada[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Ada[00m$ gnatmake year_codes[K./year_code
+bash: ./year_code: No such file or directory
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Ada[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Ada[00m$ ./year_codes
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: freshman
+ The integer code is: 1
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Ada[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Ada[00m$ ./year_codes
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: sophomore
+ The integer code is: 2
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Ada[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Ada[00m$ ./year_codes
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: junior
+ The integer code is: 3
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Ada[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Ada[00m$ ./year_codes
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: senior
+ The integer code is: 4
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Ada[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Ada[00m$ prek    ./year_codes
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: prek
+ The integer code is: 0
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Ada[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Ada[00m$ exit
+exit
+
+Script done on 2020-02-20 00:28:53-0500
+Script started on 2020-02-20 00:31:30-0500
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Clojure[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Clojure[00m$ exitclojure -m year_codesat src/year_codes.cljexit[K./year_codes[Kgnatmake year_codes[1Pcat year_codes.adbgnatmake year_codes[8P./year_codes[8Pexitcat src/year_codes.clj[1Plojure -m year_codesat src/year_codes.clj
+;;;; Emily Costa
+;;;; Feb 21, 2020
+;;;; CS 214 A
+;;;; Lab 3 - Given a grade level (string) return the appropraite number code (int)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns year_codes) ; namespace function names the code
+
+;;; Function yearCode 
+(defn yearCode [year]
+	(if (= year "freshman") 1 
+	(if (= year "sophomore") 2 
+	(if (= year "junior") 3 
+	(if (= year "senior") 4 0))))
+)
+
+;; solution using the cond function
+(defn yearCode2 [year]
+  (cond
+    (= year "freshman")  1
+    (= year "sophomore") 2
+    (= year "junior")    3
+    (= year "senior")    4
+    :else                0
+  )
+)
+
+;; solution using the case function
+(defn yearCode3 [year]
+  (case year
+    "freshman"  1
+    "sophomore" 2
+    "junior"    3
+    "senior"    4
+                0 ; default
+  )
+)
+
+(defn -main []
+	(println "\n To compute the corresponding integer code: ")
+	(print " Enter name of academic year: ") (flush)
+	(def year (read-line))
+
+	(printf " The integer code is (yearCode function): %d \n" (int(yearCode year)))
+	(printf " The integer code is (yearCode2 function): %d \n" (int(yearCode2 year)))
+	(printf " The integer code is (yearCode3 function): %d \n\n" (int(yearCode3 year)))
+
+)
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Clojure[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Clojure[00m$ cat src/year_codes.cljexit[Kclojure -m year_codes
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: freshman
+ The integer code is (yearCode function): 1 
+ The integer code is (yearCode2 function): 1 
+ The integer code is (yearCode3 function): 1 
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Clojure[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Clojure[00m$ clojure -m year_codes
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: sophomore
+ The integer code is (yearCode function): 2 
+ The integer code is (yearCode2 function): 2 
+ The integer code is (yearCode3 function): 2 
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Clojure[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Clojure[00m$ clojure -m year_codes
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: junior
+ The integer code is (yearCode function): 3 
+ The integer code is (yearCode2 function): 3 
+ The integer code is (yearCode3 function): 3 
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Clojure[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Clojure[00m$ clojure -m year_codes
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: senior
+ The integer code is (yearCode function): 4 
+ The integer code is (yearCode2 function): 4 
+ The integer code is (yearCode3 function): 4 
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Clojure[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Clojure[00m$ clojure -m year_codes
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: prek
+ The integer code is (yearCode function): 0 
+ The integer code is (yearCode2 function): 0 
+ The integer code is (yearCode3 function): 0 
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Clojure[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Clojure[00m$ exit
+exit
+
+Script done on 2020-02-20 00:32:16-0500
+Script started on 2020-02-20 00:25:49-0500
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Java[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Java[00m$ cat script      J YearCodes.java
+/*
+* Emily Costa
+* Feb 21, 2020
+* CS 214 A
+* Project 3 - Given a grade level (string) return the appropraite number code (int)
+*/
+
+
+import java.util.Scanner;  // include class for Scanner
+
+public class YearCodes {
+
+   public static int yearCode(String year) {
+
+      if (year.equals("freshman"))
+         return 1;
+      else if (year.equals("sophomore"))
+         return 2;
+      else if (year.equals("junior"))
+         return 3;
+      else if (year.equals("senior"))
+         return 4;
+      else
+         return 0;
+
+   } // yearCode method
+
+   public static void main (String[] args){
+      // promt user for input
+      System.out.println("\n\n To compute the corresponding integer code: ");
+      System.out.print(" Enter name of academic year: ");
+
+      // Scan in user input
+      Scanner keyboard = new Scanner(System.in);
+      String grade = keyboard.nextLine();
+
+      // Print result from yearCode method
+      System.out.printf(" The integer code is: %d \n\n\n", yearCode(grade));
+
+
+   } // main method
+
+} // Class YearCodes
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Java[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Java[00m$ cat YearCodes.java[1P[1P[1P[2@ja[1@v[1@a[1@c
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Java[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Java[00m$ javac YearCodes.javac[1P YearCodes.java     
+
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: freshman
+ The integer code is: 1 
+
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Java[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Java[00m$ java YearCodes
+
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: sophomore
+ The integer code is: 2 
+
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Java[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Java[00m$ java YearCodes
+
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: junior
+ The integer code is: 3 
+
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Java[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Java[00m$ java YearCodes
+
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: senior
+ The integer code is: 4 
+
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Java[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Java[00m$ java YearCodes
+
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: prek
+ The integer code is: 0 
+
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Java[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Java[00m$ exit
+exit
+
+Script done on 2020-02-20 00:26:38-0500
+Script started on 2020-02-20 01:07:32-0500
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Ruby[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Ruby[00m$ catyear     year_codes.rb
+# Emily Costa
+# Feb 21, 2020
+# CS 214 A
+# Lab 3 - Given a grade level (string) return the appropraite number code (int)
+###############################################################################
+
+#function YearCodes returns the integer value
+def YearCodes(year)
+	if year =~ /freshman/
+		return 1
+	elsif year =~ /sophomore/
+		return 2
+	elsif year =~ /junior/
+		return 3
+	elsif year =~ /senior/
+		return 4
+	else
+		return 0
+	end
+end
+
+if __FILE__==$0
+	# promt user for input
+	print "\n To compute the corresponding integer code: "
+	print "\n Enter name of academic year: "
+
+	year = gets
+	# call YearCodes function and print result
+	print " The integer code is: "  
+	print YearCodes(year)
+	print "\n\n"
+end
+
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Ruby[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Ruby[00m$ reuby    uby year.codes      _codes.rb
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: freshman
+ The integer code is: 1
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Ruby[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Ruby[00m$ ruby year_codes.rb
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: sophomore
+ The integer code is: 2
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Ruby[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Ruby[00m$ ruby year_codes.rb
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: jn unior
+ The integer code is: 3
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Ruby[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Ruby[00m$ ruby year_codes.rb
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: senior
+ The integer code is: 4
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Ruby[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Ruby[00m$ ruby year_codes.rb
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: prek
+ The integer code is: 0
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Ruby[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Ruby[00m$ exit
+exit
+
+Script done on 2020-02-20 01:08:15-0500

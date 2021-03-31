@@ -1,0 +1,97 @@
+Script started on 2020-02-13 17:33:15-0500
+]0;eac33@gold10: ~/Desktop/214/Labs/02[01;32meac33@gold10[00m:[01;34m~/Desktop/214/Labs/02[00m$ cat example6.lex
+%{
+#include <stdio.h>
+#include <stdlib.h>           /* atoi() */
+#include <string.h>           /* strcmp() */
+#include "example5.tab.h"
+%}
+%%
+[0-9]+                  yylval = atoi(yytext); return NUMBER;
+heat                    return TOKHEAT;
+on|off                  yylval = !strcmp(yytext,"on"); return STATE;
+set                     return TOKSET;
+temperature             return TOKTEMPERATURE;
+humidity		return TOKHUMIDITY;
+to			/* ignore the word to*/;
+\n                      /* ignore end of line */;
+[ \t]+                  /* ignore whitespace */;
+%%
+]0;eac33@gold10: ~/Desktop/214/Labs/02[01;32meac33@gold10[00m:[01;34m~/Desktop/214/Labs/02[00m$ cat example6.lex   y
+%{
+#include <stdio.h>
+#include <string.h>
+
+/* declarations */
+int yylex (void);
+void yyerror (char const *);
+int yyparse(void);
+
+/* definitions */ 
+void yyerror(const char *str) {
+        fprintf(stderr,"error: %s\n",str);
+}
+ 
+int yywrap() {
+        return 1;
+} 
+ 
+int main() {
+        yyparse();
+} 
+
+%}
+
+%token NUMBER TOKHEAT STATE TOKSET TOKTEMPERATURE TOKHUMIDITY
+%%
+commands: /* empty */
+        | commands command
+        ;
+
+command:
+        heat_switch
+        |
+	temperature_set
+	|
+	humidity_set 
+        ;
+
+heat_switch:
+        TOKHEAT STATE
+        {
+                if ($2) {  /* if STATE == 1 */
+                        printf("\tHeat turned on\n");
+                } else {
+                        printf("\tHeat turned off\n");
+                }        
+	}
+        ;
+
+humidity_set:
+	TOKSET TOKHUMIDITY NUMBER
+	{
+		printf("\tHumidity set to %d\n", $3);
+	}
+	;
+temperature_set:
+        TOKSET TOKTEMPERATURE NUMBER
+        {
+                printf("\tTemperature set to %d\n",$3);
+        }
+        ;
+]0;eac33@gold10: ~/Desktop/214/Labs/02[01;32meac33@gold10[00m:[01;34m~/Desktop/214/Labs/02[00m$ cat example6.y[Kmake
+make: 'example6' is up to date.
+]0;eac33@gold10: ~/Desktop/214/Labs/02[01;32meac33@gold10[00m:[01;34m~/Desktop/214/Labs/02[00m$ ./example6
+set temperature to 70
+	Temperature set to 70
+heat on
+	Heat turned on
+heat off
+	Heat turned off
+set humidity to 45
+	Humidity set to 45
+^C
+]0;eac33@gold10: ~/Desktop/214/Labs/02[01;32meac33@gold10[00m:[01;34m~/Desktop/214/Labs/02[00m$ exit
+exit
+
+Script done on 2020-02-13 17:34:39-0500

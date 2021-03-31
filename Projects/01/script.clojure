@@ -1,0 +1,56 @@
+Script started on 2020-02-10 22:27:35-0500
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Clojure[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Clojure[00m$ cat src/rectangle_area/ .clj
+
+;;;; Project 1
+;;;; Emily Costa
+;;;; Feb 12 2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns rectangle_area) ; namespace function names the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn rectangleArea [height width]
+  (* height width) )  ; returns area
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Function -main is where execution begins
+;;; Input: the width and height of a rectangle.
+;;; Output: the area of that rectangle.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (println "\nTo compute the area of a rectangle,")
+  (print   " enter its height: ") (flush)
+  (let [ height (read) ]
+    (assert (>= height 0) "-main: height must be positive")  
+    (print   " enter its width: ") (flush)
+    (let [ width (read) ]
+
+    (assert (>= width 0) "-main: width must be positive")
+
+    (printf "\nThe area is %.2f \n\n" (float(rectangleArea height width)))
+  )
+))
+
+
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Clojure[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Clojure[00m$ clojure -m rectangle_area
+
+To compute the area of a rectangle,
+ enter its height: 3
+ enter its width: 4
+
+The area is 12.00 
+
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Clojure[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Clojure[00m$ clojure -m rectangle_area
+
+To compute the area of a rectangle,
+ enter its height: 2.5
+ enter its width: 3.6
+
+The area is 9.00 
+
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Clojure[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Clojure[00m$ exit
+exit
+
+Script done on 2020-02-10 22:28:33-0500

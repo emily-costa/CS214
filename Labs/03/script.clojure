@@ -1,0 +1,94 @@
+Script started on 2020-02-20 00:31:30-0500
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Clojure[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Clojure[00m$ exitclojure -m year_codesat src/year_codes.cljexit[K./year_codes[Kgnatmake year_codes[1Pcat year_codes.adbgnatmake year_codes[8P./year_codes[8Pexitcat src/year_codes.clj[1Plojure -m year_codesat src/year_codes.clj
+;;;; Emily Costa
+;;;; Feb 21, 2020
+;;;; CS 214 A
+;;;; Lab 3 - Given a grade level (string) return the appropraite number code (int)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns year_codes) ; namespace function names the code
+
+;;; Function yearCode 
+(defn yearCode [year]
+	(if (= year "freshman") 1 
+	(if (= year "sophomore") 2 
+	(if (= year "junior") 3 
+	(if (= year "senior") 4 0))))
+)
+
+;; solution using the cond function
+(defn yearCode2 [year]
+  (cond
+    (= year "freshman")  1
+    (= year "sophomore") 2
+    (= year "junior")    3
+    (= year "senior")    4
+    :else                0
+  )
+)
+
+;; solution using the case function
+(defn yearCode3 [year]
+  (case year
+    "freshman"  1
+    "sophomore" 2
+    "junior"    3
+    "senior"    4
+                0 ; default
+  )
+)
+
+(defn -main []
+	(println "\n To compute the corresponding integer code: ")
+	(print " Enter name of academic year: ") (flush)
+	(def year (read-line))
+
+	(printf " The integer code is (yearCode function): %d \n" (int(yearCode year)))
+	(printf " The integer code is (yearCode2 function): %d \n" (int(yearCode2 year)))
+	(printf " The integer code is (yearCode3 function): %d \n\n" (int(yearCode3 year)))
+
+)
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Clojure[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Clojure[00m$ cat src/year_codes.cljexit[Kclojure -m year_codes
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: freshman
+ The integer code is (yearCode function): 1 
+ The integer code is (yearCode2 function): 1 
+ The integer code is (yearCode3 function): 1 
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Clojure[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Clojure[00m$ clojure -m year_codes
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: sophomore
+ The integer code is (yearCode function): 2 
+ The integer code is (yearCode2 function): 2 
+ The integer code is (yearCode3 function): 2 
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Clojure[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Clojure[00m$ clojure -m year_codes
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: junior
+ The integer code is (yearCode function): 3 
+ The integer code is (yearCode2 function): 3 
+ The integer code is (yearCode3 function): 3 
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Clojure[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Clojure[00m$ clojure -m year_codes
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: senior
+ The integer code is (yearCode function): 4 
+ The integer code is (yearCode2 function): 4 
+ The integer code is (yearCode3 function): 4 
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Clojure[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Clojure[00m$ clojure -m year_codes
+
+ To compute the corresponding integer code: 
+ Enter name of academic year: prek
+ The integer code is (yearCode function): 0 
+ The integer code is (yearCode2 function): 0 
+ The integer code is (yearCode3 function): 0 
+
+]0;eac33@gold30: ~/Desktop/214/Labs/03/Clojure[01;32meac33@gold30[00m:[01;34m~/Desktop/214/Labs/03/Clojure[00m$ exit
+exit
+
+Script done on 2020-02-20 00:32:16-0500

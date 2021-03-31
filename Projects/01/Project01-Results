@@ -1,0 +1,238 @@
+Script started on 2020-02-10 21:21:28-0500
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Ada[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Ada[00m$ exit./rectangle_area[7@gnatmake rectangle_area[1Pcat rectangle_area.adb
+-- Emily Costa
+-- Feb 12, 2020
+----------------------------------------------------
+
+with Ada.Text_IO, Ada.Float_Text_IO;
+use  Ada.Text_IO, Ada.Float_Text_IO;
+
+-- start of main function
+procedure rectangle_area is
+
+   -- declaring float variables
+  height, width, area : float;
+
+   -- calling a function that going to take a float value for h and w (height and width)
+   function RectangleArea(h,w: in float) return float is
+
+   begin
+   	  -- function returning the value of the area 
+      return h * w;
+   end RectangleArea;
+
+begin 
+  
+   -- prompt user to give values for height and width
+   New_Line;
+   Put_Line("To compute the area of a rectangle,");
+   Put("enter its height: ");
+   Get(height);
+   Put("enter its width: ");
+   Get(width);
+   
+   -- calling the function RectangleArea
+   area := RectangleArea(height, width);
+
+   -- print results
+   New_Line;
+   Put("The Rectangle's area is ");
+   Put(area, 1, 2, 0);
+   New_Line; New_Line; 
+
+end rectangle_area;
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Ada[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Ada[00m$ cat rectangle_area.adbexit[K./rectangle_area[7@gnatmake rectangle_area
+gnatmake: "rectangle_area" up to date.
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Ada[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Ada[00m$ gnatmake rectangle_area[1Pcat rectangle_area.adbexit[K./rectangle_area[7@gnatmake rectangle_area[7P./rectangle_area
+
+To compute the area of a rectangle,
+enter its height: 4
+enter its width: 8
+
+The Rectangle's area is 32.00
+
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Ada[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Ada[00m$ ./rectangle_area
+
+To compute the area of a rectangle,
+enter its height: 2.5
+enter its width: 2.6
+
+The Rectangle's area is 6.50
+
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Ada[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Ada[00m$ exit
+exit
+
+Script done on 2020-02-10 21:21:59-0500
+Script started on 2020-02-10 22:27:35-0500
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Clojure[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Clojure[00m$ cat src/rectangle_area/ .clj
+
+;;;; Project 1
+;;;; Emily Costa
+;;;; Feb 12 2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns rectangle_area) ; namespace function names the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn rectangleArea [height width]
+  (* height width) )  ; returns area
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Function -main is where execution begins
+;;; Input: the width and height of a rectangle.
+;;; Output: the area of that rectangle.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (println "\nTo compute the area of a rectangle,")
+  (print   " enter its height: ") (flush)
+  (let [ height (read) ]
+    (assert (>= height 0) "-main: height must be positive")  
+    (print   " enter its width: ") (flush)
+    (let [ width (read) ]
+
+    (assert (>= width 0) "-main: width must be positive")
+
+    (printf "\nThe area is %.2f \n\n" (float(rectangleArea height width)))
+  )
+))
+
+
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Clojure[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Clojure[00m$ clojure -m rectangle_area
+
+To compute the area of a rectangle,
+ enter its height: 3
+ enter its width: 4
+
+The area is 12.00 
+
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Clojure[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Clojure[00m$ clojure -m rectangle_area
+
+To compute the area of a rectangle,
+ enter its height: 2.5
+ enter its width: 3.6
+
+The area is 9.00 
+
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Clojure[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Clojure[00m$ exit
+exit
+
+Script done on 2020-02-10 22:28:33-0500
+Script started on 2020-02-07 14:43:16-0500
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Java[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Java[00m$ cat RectangleArea.java
+ /* CircleArea.java computes the area of a circle.
+ *
+ * Emily Costa
+ * Feb 12, 2020
+ * CS 214A
+ * Project 01
+ **********************************************************/
+
+
+import java.util.Scanner;  // include class for Scanner
+
+public class RectangleArea {
+
+     /* function RectangleArea() computes a rectabgle's area
+      * Parameter: width and height
+      * Returns: the area of the rectangle
+      */
+     public static double RectangleArea(double w, double h) {
+        return w * h;               // return an expression
+     } 
+	
+  // main program
+  public static void main(String[] args) {
+      // prompt for width
+      System.out.println("\n\nTo compute the area of a rectangle,");
+      System.out.print(" enter its width: ");
+
+      // Create a connection named keyboard to standard in
+      Scanner keyboard = new Scanner(System.in);
+
+      //Get the number from the user
+      double width = keyboard.nextDouble();
+
+      // prompt for height
+      System.out.print(" enter its height: ");
+      double height = keyboard.nextDouble();
+
+      // output area
+      System.out.printf("The area is %.2f\n\n", RectangleArea(width, height));
+  } // main method
+
+} // class CircleArea
+
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Java[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Java[00m$ javac RectangleArea.java
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Java[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Java[00m$ java RectangleArea
+
+
+To compute the area of a rectangle,
+ enter its width: 3
+ enter its height: 4
+The area is 12.00
+
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Java[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Java[00m$ java RectangleArea
+
+
+To compute the area of a rectangle,
+ enter its width: 1.2
+ enter its height: 3.4
+The area is 4.08
+
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Java[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Java[00m$ java RectangleArea
+
+
+To compute the area of a rectangle,
+ enter its width: 25
+ enter its height: 10
+The area is 250.00
+
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Java[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Java[00m$ wq  exit
+exit
+
+Script done on 2020-02-07 14:44:20-0500
+Script started on 2020-02-10 22:36:01-0500
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Ruby[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Ruby[00m$ cat script.rb[1P[1P[1P[1P[1P[1P[1@r[1@e[1@c[1@t[1@a[1@n[1@g[1@l[1@e[1@_[1@a[1@r[1@e[1@a.
+# Project 1
+# Emily Costa
+# Feb 12 2020
+###############################################################
+
+# function rectangleArea returns a rectangle's area, given its height and width
+
+def rectangleArea(h,w)
+    h * w 
+end
+
+if __FILE__ == $0
+   puts "\nTo compute the area of a rectangle,"
+   print " enter its height: "
+   height = gets.chomp.to_f
+   print " enter its width: "
+   width = gets.chomp.to_f
+   print "\nThe circle's area is: "
+   puts rectangleArea(height,width)
+   print "\n"
+end
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Ruby[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Ruby[00m$ ruby rectag ngle_area.rb
+
+To compute the area of a rectangle,
+ enter its height: 2
+ enter its width: 3
+
+The circle's area is: 6.0
+
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Ruby[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Ruby[00m$ ruby rectangle_area.rb
+
+To compute the area of a rectangle,
+ enter its height: 2.5
+ enter its width: 2 3,6  .6
+
+The circle's area is: 9.0
+
+]0;eac33@gold29: ~/Desktop/214/Projects/01/Ruby[01;32meac33@gold29[00m:[01;34m~/Desktop/214/Projects/01/Ruby[00m$ xit   exit
+exit
+
+Script done on 2020-02-10 22:37:00-0500
